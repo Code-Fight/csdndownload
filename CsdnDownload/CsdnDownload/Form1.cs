@@ -22,6 +22,8 @@ namespace CsdnDownload
         private void Form1_Load(object sender, EventArgs e)
         {
            // GetEmail();
+            IPCollectionBll bll=new IPCollectionBll();
+            bll.AddTest();
         }
 
 
