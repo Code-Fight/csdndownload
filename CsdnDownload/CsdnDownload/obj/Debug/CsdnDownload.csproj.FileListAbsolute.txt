@@ -1,0 +1,16 @@
+D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\obj\Debug\CsdnDownload.csprojResolveAssemblyReference.cache
+D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\obj\Debug\CsdnDownload.Form1.resources
+D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\obj\Debug\CsdnDownload.Properties.Resources.resources
+D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\obj\Debug\CsdnDownload.csproj.GenerateResource.Cache
+D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\bin\Debug\CsdnDownload.exe.config
+D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\bin\Debug\CsdnDownload.exe
+D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\bin\Debug\CsdnDownload.pdb
+D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\bin\Debug\Bll.dll
+D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\bin\Debug\FTools.dll
+D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\bin\Debug\DAL.dll
+D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\bin\Debug\System.Data.SQLite.dll
+D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\bin\Debug\Bll.pdb
+D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\bin\Debug\FTools.pdb
+D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\bin\Debug\DAL.pdb
+D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\obj\Debug\CsdnDownload.exe
+D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\obj\Debug\CsdnDownload.pdb

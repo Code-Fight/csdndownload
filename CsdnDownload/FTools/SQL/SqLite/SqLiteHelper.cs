@@ -38,7 +38,7 @@ namespace FTools.SQL.SqLite
         /// </summary>
         private void GetCommand()
         {
-            using (SQLiteConnection conn = new SQLiteConnection(DB_Path))
+            using (SQLiteConnection conn = new SQLiteConnection("data source = "+DB_Path))
             {
                 using (SQLiteCommand sqLiteCommand = new SQLiteCommand())
                 {
