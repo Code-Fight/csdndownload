@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using FTools.SQL;
 using FTools.SQL.SqLite;
 
 namespace DAL
