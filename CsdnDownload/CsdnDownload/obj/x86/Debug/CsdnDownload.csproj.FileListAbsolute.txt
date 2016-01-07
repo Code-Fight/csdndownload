@@ -14,3 +14,5 @@ D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\bin\x86\Debug\FTools.pd
 D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\bin\x86\Debug\DAL.pdb
 D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\obj\x86\Debug\CsdnDownload.exe
 D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\obj\x86\Debug\CsdnDownload.pdb
+D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\bin\x86\Debug\Entity.dll
+D:\C#_Project\Git\csdndownload\CsdnDownload\CsdnDownload\bin\x86\Debug\Entity.pdb

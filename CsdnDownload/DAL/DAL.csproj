@@ -65,6 +65,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{cfd791c5-85f0-4086-a233-1986e2e15531}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\FTools\FTools.csproj">
       <Project>{c0331d44-565c-4830-8189-75d2b8242c2d}</Project>
       <Name>FTools</Name>

@@ -98,6 +98,10 @@
       <Project>{6709DD00-0ECB-4E6D-8DAA-F650D5113B22}</Project>
       <Name>Bll</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Entity\Entity.csproj">
+      <Project>{CFD791C5-85F0-4086-A233-1986E2E15531}</Project>
+      <Name>Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

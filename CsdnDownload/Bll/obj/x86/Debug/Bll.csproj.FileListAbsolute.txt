@@ -8,3 +8,5 @@ D:\C#_Project\Git\csdndownload\CsdnDownload\Bll\bin\x86\Debug\DAL.pdb
 D:\C#_Project\Git\csdndownload\CsdnDownload\Bll\bin\x86\Debug\FTools.pdb
 D:\C#_Project\Git\csdndownload\CsdnDownload\Bll\obj\x86\Debug\Bll.dll
 D:\C#_Project\Git\csdndownload\CsdnDownload\Bll\obj\x86\Debug\Bll.pdb
+D:\C#_Project\Git\csdndownload\CsdnDownload\Bll\bin\x86\Debug\Entity.dll
+D:\C#_Project\Git\csdndownload\CsdnDownload\Bll\bin\x86\Debug\Entity.pdb

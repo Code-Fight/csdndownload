@@ -29,21 +29,40 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_del_ip_rule = new System.Windows.Forms.Button();
+            this.btn_edit_ip_rule = new System.Windows.Forms.Button();
+            this.btn_add_ip_rule = new System.Windows.Forms.Button();
+            this.rtxt_ip_rule_rex = new System.Windows.Forms.RichTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txt_ip_rule_url = new System.Windows.Forms.TextBox();
+            this.txt_ip_rule_name = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lb1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgv_ip_rule = new System.Windows.Forms.DataGridView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.rule_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rule_url = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rule_rex = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lb_ip_rule_id = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage5.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_ip_rule)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -60,11 +79,11 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.tabPage1.BackColor = System.Drawing.Color.White;
             this.tabPage1.Location = new System.Drawing.Point(4, 23);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(759, 408);
+            this.tabPage1.Size = new System.Drawing.Size(758, 408);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             // 
@@ -73,7 +92,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 23);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(763, 408);
+            this.tabPage2.Size = new System.Drawing.Size(758, 408);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -89,14 +108,6 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "代理IP";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "ip_40px_572935_easyicon.net.png");
-            this.imageList1.Images.SetKeyName(1, "settings_668px_1195254_easyicon.net.png");
-            this.imageList1.Images.SetKeyName(2, "screen_399px_1173039_easyicon.net.png");
             // 
             // tabControl2
             // 
@@ -122,8 +133,8 @@
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.groupBox2);
             this.tabPage5.Controls.Add(this.groupBox1);
+            this.tabPage5.Controls.Add(this.groupBox2);
             this.tabPage5.ImageIndex = 1;
             this.tabPage5.Location = new System.Drawing.Point(4, 23);
             this.tabPage5.Name = "tabPage5";
@@ -135,21 +146,188 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(666, 6);
+            this.groupBox1.Controls.Add(this.lb_ip_rule_id);
+            this.groupBox1.Controls.Add(this.btn_del_ip_rule);
+            this.groupBox1.Controls.Add(this.btn_edit_ip_rule);
+            this.groupBox1.Controls.Add(this.btn_add_ip_rule);
+            this.groupBox1.Controls.Add(this.rtxt_ip_rule_rex);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.txt_ip_rule_url);
+            this.groupBox1.Controls.Add(this.txt_ip_rule_name);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.lb1);
+            this.groupBox1.Location = new System.Drawing.Point(3, 290);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(84, 367);
+            this.groupBox1.Size = new System.Drawing.Size(750, 88);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "操作区";
             // 
+            // btn_del_ip_rule
+            // 
+            this.btn_del_ip_rule.Location = new System.Drawing.Point(670, 63);
+            this.btn_del_ip_rule.Name = "btn_del_ip_rule";
+            this.btn_del_ip_rule.Size = new System.Drawing.Size(75, 23);
+            this.btn_del_ip_rule.TabIndex = 8;
+            this.btn_del_ip_rule.Text = "删除";
+            this.btn_del_ip_rule.UseVisualStyleBackColor = true;
+            this.btn_del_ip_rule.Click += new System.EventHandler(this.btn_del_ip_rule_Click);
+            // 
+            // btn_edit_ip_rule
+            // 
+            this.btn_edit_ip_rule.Location = new System.Drawing.Point(670, 37);
+            this.btn_edit_ip_rule.Name = "btn_edit_ip_rule";
+            this.btn_edit_ip_rule.Size = new System.Drawing.Size(75, 23);
+            this.btn_edit_ip_rule.TabIndex = 7;
+            this.btn_edit_ip_rule.Text = "修改";
+            this.btn_edit_ip_rule.UseVisualStyleBackColor = true;
+            this.btn_edit_ip_rule.Click += new System.EventHandler(this.btn_edit_ip_rule_Click);
+            // 
+            // btn_add_ip_rule
+            // 
+            this.btn_add_ip_rule.Location = new System.Drawing.Point(670, 11);
+            this.btn_add_ip_rule.Name = "btn_add_ip_rule";
+            this.btn_add_ip_rule.Size = new System.Drawing.Size(75, 23);
+            this.btn_add_ip_rule.TabIndex = 6;
+            this.btn_add_ip_rule.Text = "增加";
+            this.btn_add_ip_rule.UseVisualStyleBackColor = true;
+            this.btn_add_ip_rule.Click += new System.EventHandler(this.btn_add_ip_rule_Click);
+            // 
+            // rtxt_ip_rule_rex
+            // 
+            this.rtxt_ip_rule_rex.Location = new System.Drawing.Point(376, 20);
+            this.rtxt_ip_rule_rex.Name = "rtxt_ip_rule_rex";
+            this.rtxt_ip_rule_rex.Size = new System.Drawing.Size(287, 57);
+            this.rtxt_ip_rule_rex.TabIndex = 5;
+            this.rtxt_ip_rule_rex.Text = "";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(309, 27);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(65, 12);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "采集正则：";
+            // 
+            // txt_ip_rule_url
+            // 
+            this.txt_ip_rule_url.Location = new System.Drawing.Point(66, 56);
+            this.txt_ip_rule_url.Name = "txt_ip_rule_url";
+            this.txt_ip_rule_url.Size = new System.Drawing.Size(237, 21);
+            this.txt_ip_rule_url.TabIndex = 3;
+            // 
+            // txt_ip_rule_name
+            // 
+            this.txt_ip_rule_name.Location = new System.Drawing.Point(66, 24);
+            this.txt_ip_rule_name.Name = "txt_ip_rule_name";
+            this.txt_ip_rule_name.Size = new System.Drawing.Size(237, 21);
+            this.txt_ip_rule_name.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 59);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "采集地址：";
+            // 
+            // lb1
+            // 
+            this.lb1.AutoSize = true;
+            this.lb1.Location = new System.Drawing.Point(7, 27);
+            this.lb1.Name = "lb1";
+            this.lb1.Size = new System.Drawing.Size(65, 12);
+            this.lb1.TabIndex = 0;
+            this.lb1.Text = "规则名称：";
+            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.dgv_ip_rule);
             this.groupBox2.Location = new System.Drawing.Point(3, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(657, 367);
+            this.groupBox2.Size = new System.Drawing.Size(750, 278);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "规则列表";
+            // 
+            // dgv_ip_rule
+            // 
+            this.dgv_ip_rule.AllowUserToAddRows = false;
+            this.dgv_ip_rule.AllowUserToDeleteRows = false;
+            this.dgv_ip_rule.BackgroundColor = System.Drawing.Color.White;
+            this.dgv_ip_rule.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_ip_rule.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.rule_name,
+            this.rule_url,
+            this.rule_rex,
+            this.id});
+            this.dgv_ip_rule.GridColor = System.Drawing.Color.Black;
+            this.dgv_ip_rule.Location = new System.Drawing.Point(7, 20);
+            this.dgv_ip_rule.Name = "dgv_ip_rule";
+            this.dgv_ip_rule.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_ip_rule.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgv_ip_rule.RowTemplate.Height = 23;
+            this.dgv_ip_rule.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_ip_rule.Size = new System.Drawing.Size(738, 252);
+            this.dgv_ip_rule.TabIndex = 0;
+            this.dgv_ip_rule.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_ip_rule_CellClick);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "ip_40px_572935_easyicon.net.png");
+            this.imageList1.Images.SetKeyName(1, "settings_668px_1195254_easyicon.net.png");
+            this.imageList1.Images.SetKeyName(2, "screen_399px_1173039_easyicon.net.png");
+            // 
+            // rule_name
+            // 
+            this.rule_name.DataPropertyName = "rule_name";
+            this.rule_name.HeaderText = "规则名称";
+            this.rule_name.Name = "rule_name";
+            this.rule_name.ReadOnly = true;
+            this.rule_name.Width = 150;
+            // 
+            // rule_url
+            // 
+            this.rule_url.DataPropertyName = "rule_url";
+            this.rule_url.HeaderText = "采集地址";
+            this.rule_url.Name = "rule_url";
+            this.rule_url.ReadOnly = true;
+            this.rule_url.Width = 200;
+            // 
+            // rule_rex
+            // 
+            this.rule_rex.DataPropertyName = "rule_rex";
+            this.rule_rex.HeaderText = "采集正则";
+            this.rule_rex.Name = "rule_rex";
+            this.rule_rex.ReadOnly = true;
+            this.rule_rex.Width = 300;
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.Visible = false;
+            // 
+            // lb_ip_rule_id
+            // 
+            this.lb_ip_rule_id.AutoSize = true;
+            this.lb_ip_rule_id.Location = new System.Drawing.Point(319, 63);
+            this.lb_ip_rule_id.Name = "lb_ip_rule_id";
+            this.lb_ip_rule_id.Size = new System.Drawing.Size(0, 12);
+            this.lb_ip_rule_id.TabIndex = 9;
+            this.lb_ip_rule_id.Visible = false;
             // 
             // Form1
             // 
@@ -157,6 +335,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(767, 448);
             this.Controls.Add(this.tabControl1);
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "CsdnDownloader";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -164,6 +343,10 @@
             this.tabPage3.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_ip_rule)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -180,6 +363,21 @@
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btn_del_ip_rule;
+        private System.Windows.Forms.Button btn_edit_ip_rule;
+        private System.Windows.Forms.Button btn_add_ip_rule;
+        private System.Windows.Forms.RichTextBox rtxt_ip_rule_rex;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txt_ip_rule_url;
+        private System.Windows.Forms.TextBox txt_ip_rule_name;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lb1;
+        private System.Windows.Forms.DataGridView dgv_ip_rule;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rule_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rule_url;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rule_rex;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.Label lb_ip_rule_id;
     }
 }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SQLite;
 using System.IO;
 using System.Text;
@@ -161,6 +162,73 @@ namespace FTools.SQL.SqLite
             //return false;
             return c == 1;
         }
+
+        /// <summary>     
+        /// 执行一个查询语句，返回一个包含查询结果的DataTable     
+        /// </summary>     
+        /// <param name="sql">要执行的查询语句</param>     
+        /// <param name="parameters">执行SQL查询语句所需要的参数，参数必须以它们在SQL语句中的顺序为准</param>     
+        /// <returns></returns>     
+        public DataTable ExecuteDataTable(string sql, SQLiteParameter[] parameters=null)
+        {
+            if (sql == null)
+            {
+                throw new ArgumentNullException("sql=null");
+            }
+            EnsureConnection();
+            if (ShowSql)
+            {
+                Console.WriteLine("SQL: " + sql);
+            }
+
+            using (SQLiteCommand command = new SQLiteCommand(sql, Connection))
+            {
+                if (!(parameters == null || parameters.Length == 0))
+                {
+                    foreach (SQLiteParameter parameter in parameters)
+                    {
+                        command.Parameters.Add(parameter);
+                    }
+                }
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(command);
+                DataTable data = new DataTable();
+                adapter.Fill(data);
+                command.Dispose();
+                return data;
+            }
+        }
+
+        /// <summary>     
+        /// 执行一个查询语句，返回查询结果的第一行第一列     
+        /// </summary>     
+        /// <param name="sql">要执行的查询语句</param>     
+        /// <param name="parameters">执行SQL查询语句所需要的参数，参数必须以它们在SQL语句中的顺序为准</param>     
+        /// <returns></returns>     
+        public Object ExecuteScalar(string sql, SQLiteParameter[] parameters=null)
+        {
+            if (sql == null)
+            {
+                throw new ArgumentNullException("sql=null");
+            }
+            EnsureConnection();
+            if (ShowSql)
+            {
+                Console.WriteLine("SQL: " + sql);
+            }
+
+            using (SQLiteCommand command = new SQLiteCommand(sql, Connection))
+            {
+                if (!(parameters == null || parameters.Length == 0))
+                {
+                    foreach (SQLiteParameter parameter in parameters)
+                    {
+                        command.Parameters.Add(parameter);
+                    }
+                }
+                return command.ExecuteScalar();
+            }
+
+        }  
 
         /// <summary>
         /// <para>执行SQL,返回受影响的行数</para>
