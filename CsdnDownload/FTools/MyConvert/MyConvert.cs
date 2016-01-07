@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data;
 
-namespace FTools.Convert
+namespace FTools.MyConvert
 {
     /// <summary>
     /// 校验

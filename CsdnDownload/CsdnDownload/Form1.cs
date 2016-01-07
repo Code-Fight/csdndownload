@@ -10,6 +10,7 @@ using System.Text;
 using System.Windows.Forms;
 using Bll;
 using Entity;
+using FTools.Log;
 
 namespace CsdnDownload
 {
@@ -23,7 +24,9 @@ namespace CsdnDownload
         private void Form1_Load(object sender, EventArgs e)
         {
            // GetEmail();
-            Init();
+            //Init();
+            
+            Log.WriteLog(typeof(Form1),"测试");
 
         }
 

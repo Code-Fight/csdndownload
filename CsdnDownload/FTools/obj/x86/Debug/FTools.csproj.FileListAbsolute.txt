@@ -1,6 +1,6 @@
 D:\C#_Project\Git\csdndownload\CsdnDownload\FTools\bin\x86\Debug\FTools.dll
 D:\C#_Project\Git\csdndownload\CsdnDownload\FTools\bin\x86\Debug\FTools.pdb
+D:\C#_Project\Git\csdndownload\CsdnDownload\FTools\bin\x86\Debug\log4net.dll
 D:\C#_Project\Git\csdndownload\CsdnDownload\FTools\bin\x86\Debug\System.Data.SQLite.dll
 D:\C#_Project\Git\csdndownload\CsdnDownload\FTools\obj\x86\Debug\FTools.dll
 D:\C#_Project\Git\csdndownload\CsdnDownload\FTools\obj\x86\Debug\FTools.pdb
-D:\C#_Project\Git\csdndownload\CsdnDownload\FTools\obj\x86\Debug\FTools.csprojResolveAssemblyReference.cache
