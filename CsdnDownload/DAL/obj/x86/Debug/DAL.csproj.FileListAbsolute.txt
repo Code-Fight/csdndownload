@@ -1,3 +1,4 @@
+D:\C#_Project\Git\csdndownload\CsdnDownload\DAL\bin\x86\Debug\Log\Log4net.config
 D:\C#_Project\Git\csdndownload\CsdnDownload\DAL\bin\x86\Debug\DAL.dll
 D:\C#_Project\Git\csdndownload\CsdnDownload\DAL\bin\x86\Debug\DAL.pdb
 D:\C#_Project\Git\csdndownload\CsdnDownload\DAL\bin\x86\Debug\Entity.dll

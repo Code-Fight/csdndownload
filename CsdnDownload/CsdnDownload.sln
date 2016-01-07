@@ -76,6 +76,7 @@ Global
 		{CFD791C5-85F0-4086-A233-1986E2E15531}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
 		{CFD791C5-85F0-4086-A233-1986E2E15531}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
 		{CFD791C5-85F0-4086-A233-1986E2E15531}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CFD791C5-85F0-4086-A233-1986E2E15531}.Debug|x86.Build.0 = Debug|Any CPU
 		{CFD791C5-85F0-4086-A233-1986E2E15531}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CFD791C5-85F0-4086-A233-1986E2E15531}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CFD791C5-85F0-4086-A233-1986E2E15531}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU

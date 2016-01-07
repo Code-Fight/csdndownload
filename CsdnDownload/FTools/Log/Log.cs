@@ -9,7 +9,6 @@ namespace FTools.Log
     /// <summary>
     /// log4net 帮助类
     /// </summary>
-    [assembly: log4net.Config.XmlConfigurator(Watch = true)]
     public class Log
     {
         /// <summary>
