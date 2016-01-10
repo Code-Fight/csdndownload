@@ -59,7 +59,8 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="EmailBll.cs" />
-    <Compile Include="IPCollectionBll.cs" />
+    <Compile Include="IP\IPCollectionBll.cs" />
+    <Compile Include="IP\IPCollectionHttpBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

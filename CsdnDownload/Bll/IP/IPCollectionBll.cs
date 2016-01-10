@@ -1,15 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
+﻿using System.Data;
 using DAL;
 using Entity;
 
-namespace Bll
+namespace Bll.IP
 {
     public class IpCollectionBll
     {
+
+        #region DBA 
+
         public string GetIp()
         {
             return string.Empty;
@@ -19,7 +18,7 @@ namespace Bll
         public void Add(IpCollectionEntity info)
         {
             IpCollectionDal dal = new IpCollectionDal();
-            dal.Add(info);            
+            dal.Add(info);
         }
 
         public DataTable GetAll()
@@ -28,16 +27,19 @@ namespace Bll
             return dal.GetAll();
         }
 
-         public void Update(IpCollectionEntity info)
+        public void Update(IpCollectionEntity info)
         {
             IpCollectionDal dal = new IpCollectionDal();
-             dal.Update(info);
+            dal.Update(info);
         }
 
-         public void Delete(int id)
-         {
-             IpCollectionDal dal = new IpCollectionDal();
-             dal.Delete(id);
-         }
+        public void Delete(int id)
+        {
+            IpCollectionDal dal = new IpCollectionDal();
+            dal.Delete(id);
+        }
+
+        #endregion
+
     }
 }

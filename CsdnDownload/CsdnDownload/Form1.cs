@@ -9,6 +9,7 @@ using System.Security.Policy;
 using System.Text;
 using System.Windows.Forms;
 using Bll;
+using Bll.IP;
 using Entity;
 using FTools.Log;
 
@@ -23,10 +24,8 @@ namespace CsdnDownload
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           // GetEmail();
-            //Init();
-            
-            Log.WriteLog(typeof(Form1),"测试");
+            Log.WriteLog(this.GetType(), "程序启动");
+            Init();
 
         }
 
@@ -103,6 +102,18 @@ namespace CsdnDownload
 
         #endregion
 
+
+        #region ip工作台
+
+        private void btn_ip_start_Click(object sender, EventArgs e)
+        {
+            //TODO: 第一步采集ip,第一步开一个线程效验ip
+
+            
+        }
+
+
+        #endregion
 
         
     }
