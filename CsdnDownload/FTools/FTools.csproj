@@ -69,6 +69,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AntiCode\AntiHelper.cs" />
     <Compile Include="MyConvert\MyConvert.cs" />
     <Compile Include="Encode\Encode.cs" />
     <Compile Include="HTTP\HttpCode.cs" />
@@ -76,9 +77,15 @@
     <Compile Include="IP\IPCollection.cs" />
     <Compile Include="Log\Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource1.resx</DependentUpon>
+    </Compile>
     <Compile Include="SQL\SqLite\SqLiteHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="lib\AntiVC.dll" />
     <Content Include="lib\log4net.dll" />
     <Content Include="lib\Newtonsoft.Json.dll" />
     <Content Include="lib\System.Data.SQLite.dll" />
@@ -87,6 +94,12 @@
     <None Include="Log\Log4net.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resource1.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

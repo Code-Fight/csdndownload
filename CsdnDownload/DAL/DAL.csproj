@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CsdnUserDal.cs" />
     <Compile Include="IPCollectionDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

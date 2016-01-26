@@ -115,6 +115,12 @@ namespace CsdnDownload
 
         #endregion
 
+        private void btn_start_Click(object sender, EventArgs e)
+        {
+            RegBll regBll=new RegBll();
+            regBll.GetVcode();
+        }
+
         
     }
 }

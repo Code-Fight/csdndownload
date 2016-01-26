@@ -50,6 +50,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -57,11 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="EmailBll.cs" />
+    <Compile Include="Email\Email01Bll.cs" />
     <Compile Include="IP\IPCollectionBll.cs" />
     <Compile Include="IP\IPCollectionHttpBll.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegBll.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
@@ -76,6 +78,9 @@
       <Project>{C0331D44-565C-4830-8189-75D2B8242C2D}</Project>
       <Name>FTools</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Vcode\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
