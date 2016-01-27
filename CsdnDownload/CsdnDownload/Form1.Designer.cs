@@ -33,6 +33,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btn_start = new System.Windows.Forms.Button();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.list_log = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl2 = new System.Windows.Forms.TabControl();
@@ -66,11 +69,9 @@
             this.rule_rex = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.list_log = new System.Windows.Forms.ListBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.btn_start = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -82,7 +83,6 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ip_rule)).BeginInit();
-            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -109,6 +109,38 @@
             this.tabPage1.Size = new System.Drawing.Size(758, 408);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "工作台";
+            // 
+            // btn_start
+            // 
+            this.btn_start.BackColor = System.Drawing.Color.DarkGray;
+            this.btn_start.Location = new System.Drawing.Point(606, 27);
+            this.btn_start.Name = "btn_start";
+            this.btn_start.Size = new System.Drawing.Size(75, 23);
+            this.btn_start.TabIndex = 2;
+            this.btn_start.Text = "开始";
+            this.btn_start.UseVisualStyleBackColor = false;
+            this.btn_start.Click += new System.EventHandler(this.btn_start_Click);
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.list_log);
+            this.groupBox6.Location = new System.Drawing.Point(7, 199);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(743, 203);
+            this.groupBox6.TabIndex = 1;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "日志";
+            // 
+            // list_log
+            // 
+            this.list_log.BackColor = System.Drawing.Color.Black;
+            this.list_log.ForeColor = System.Drawing.SystemColors.Window;
+            this.list_log.FormattingEnabled = true;
+            this.list_log.ItemHeight = 12;
+            this.list_log.Location = new System.Drawing.Point(6, 18);
+            this.list_log.Name = "list_log";
+            this.list_log.Size = new System.Drawing.Size(731, 172);
+            this.list_log.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -452,37 +484,6 @@
             this.imageList1.Images.SetKeyName(3, "email_267px_1138639_easyicon.net.png");
             this.imageList1.Images.SetKeyName(4, "screen_576px_1192859_easyicon.net.png");
             // 
-            // list_log
-            // 
-            this.list_log.BackColor = System.Drawing.Color.Black;
-            this.list_log.ForeColor = System.Drawing.SystemColors.Window;
-            this.list_log.FormattingEnabled = true;
-            this.list_log.ItemHeight = 12;
-            this.list_log.Location = new System.Drawing.Point(6, 18);
-            this.list_log.Name = "list_log";
-            this.list_log.Size = new System.Drawing.Size(731, 172);
-            this.list_log.TabIndex = 0;
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.list_log);
-            this.groupBox6.Location = new System.Drawing.Point(7, 199);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(743, 203);
-            this.groupBox6.TabIndex = 1;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "日志";
-            // 
-            // btn_start
-            // 
-            this.btn_start.Location = new System.Drawing.Point(548, 27);
-            this.btn_start.Name = "btn_start";
-            this.btn_start.Size = new System.Drawing.Size(75, 23);
-            this.btn_start.TabIndex = 2;
-            this.btn_start.Text = "开始";
-            this.btn_start.UseVisualStyleBackColor = true;
-            this.btn_start.Click += new System.EventHandler(this.btn_start_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -495,6 +496,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
@@ -508,7 +510,6 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ip_rule)).EndInit();
-            this.groupBox6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

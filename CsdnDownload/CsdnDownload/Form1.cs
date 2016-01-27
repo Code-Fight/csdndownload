@@ -24,7 +24,7 @@ namespace CsdnDownload
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Log.WriteLog(this.GetType(), "程序启动");
+            WriteLog("程序启动");
             Init();
 
         }
@@ -118,9 +118,18 @@ namespace CsdnDownload
         private void btn_start_Click(object sender, EventArgs e)
         {
             RegBll regBll=new RegBll();
-            regBll.GetVcode();
+            regBll.Reg();
         }
 
-        
+
+
+        private void WriteLog(string msg)
+        {
+            list_log.Invoke(new Action(delegate
+            {
+                list_log.Items.Insert(0, msg);
+                Log.WriteLog(this.GetType(), msg);
+            }));
+        }
     }
 }

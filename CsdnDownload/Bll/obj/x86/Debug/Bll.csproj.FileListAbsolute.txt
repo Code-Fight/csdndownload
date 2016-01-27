@@ -12,3 +12,17 @@ D:\C#_Project\Git\csdndownload\CsdnDownload\Bll\bin\x86\Debug\Entity.pdb
 D:\C#_Project\Git\csdndownload\CsdnDownload\Bll\obj\x86\Debug\Bll.csprojResolveAssemblyReference.cache
 D:\C#_Project\Git\csdndownload\CsdnDownload\Bll\obj\x86\Debug\Bll.dll
 D:\C#_Project\Git\csdndownload\CsdnDownload\Bll\obj\x86\Debug\Bll.pdb
+E:\MySource\GitHub\csdndownload\CsdnDownload\Bll\bin\x86\Debug\Log\Log4net.config
+E:\MySource\GitHub\csdndownload\CsdnDownload\Bll\bin\x86\Debug\Bll.dll
+E:\MySource\GitHub\csdndownload\CsdnDownload\Bll\bin\x86\Debug\Bll.pdb
+E:\MySource\GitHub\csdndownload\CsdnDownload\Bll\bin\x86\Debug\DAL.dll
+E:\MySource\GitHub\csdndownload\CsdnDownload\Bll\bin\x86\Debug\Entity.dll
+E:\MySource\GitHub\csdndownload\CsdnDownload\Bll\bin\x86\Debug\FTools.dll
+E:\MySource\GitHub\csdndownload\CsdnDownload\Bll\bin\x86\Debug\System.Data.SQLite.dll
+E:\MySource\GitHub\csdndownload\CsdnDownload\Bll\bin\x86\Debug\log4net.dll
+E:\MySource\GitHub\csdndownload\CsdnDownload\Bll\bin\x86\Debug\DAL.pdb
+E:\MySource\GitHub\csdndownload\CsdnDownload\Bll\bin\x86\Debug\FTools.pdb
+E:\MySource\GitHub\csdndownload\CsdnDownload\Bll\bin\x86\Debug\Entity.pdb
+E:\MySource\GitHub\csdndownload\CsdnDownload\Bll\obj\x86\Debug\Bll.csprojResolveAssemblyReference.cache
+E:\MySource\GitHub\csdndownload\CsdnDownload\Bll\obj\x86\Debug\Bll.dll
+E:\MySource\GitHub\csdndownload\CsdnDownload\Bll\obj\x86\Debug\Bll.pdb

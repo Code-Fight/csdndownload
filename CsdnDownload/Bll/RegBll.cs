@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using Bll.Email;
+using DAL;
 using FTools.AntiCode;
 using FTools.Encode;
 using FTools.HTTP;
@@ -20,6 +21,31 @@ namespace Bll
         private int antiIndex = 0;
         AntiHelper antiHelper = new AntiHelper();
 
+        
+
+        public void Reg()
+        {
+            string _email = email01.GetEmail();
+            string _vCode = GetVcode();
+            string _regLink = string.Empty;
+            string _username = string.Empty;
+            string _userpwd = string.Empty;
+            if (Reg_SendEamil(_email, _vCode, out _username, out _userpwd))
+            {
+                _regLink=email01.GetRegLinkByEmail();//获取激活链接
+                if (_regLink.Length>0&&_regLink.Contains("ttp"))
+                {
+                    //激活账号
+                    if (RegActivation(_regLink))
+                    {
+                        //保存账号到数据库
+                        CsdnUserDal csdnUser=new CsdnUserDal();
+                        csdnUser.AddUser(_username, _userpwd, _email);
+
+                    }
+                }
+            }
+        }
         public string GetVcode()
         {
             while (true)
@@ -37,34 +63,27 @@ namespace Bll
                 byte[] img = helper.GetHtml(items).ResultByte;
                 if (AntiHelper.GetVcodeFromBuffer(antiIndex, img, img.Length, vCodeResult))
                 {
-                    items=new HttpItems();
+                    items = new HttpItems();
                     items.URL = "http://passport.csdn.net/account/register?action=validateCode&validateCode=" + vCodeResult;
                     items.Container = cc;//自动处理Cookie时,每次提交时对cc赋值即可
                     hr = helper.GetHtml(items);//发起请求并得到结果
                     if (!hr.Html.Contains("false"))
                     {
                         return vCodeResult.ToString();
-                        
+
                     }
-                    
+
                 }
-                
+
                 Thread.Sleep(1000);
             }
-           
-            
-        }
 
-        public void Reg()
-        {
-            string _email = email01.GetEmail();
 
         }
-
-        private void Reg_SendEamil(string email,string vCode)
+        private bool Reg_SendEamil(string email, string vCode, out string username, out string pwd)
         {
-            string username = email.Split('@')[0];
-            string pwd = DateTime.Now.ToString("HHmmss")+username;
+            username = email.Split('@')[0];
+            pwd = DateTime.Now.ToString("HHmmss")+username;
             StringBuilder postData=new StringBuilder();
             postData.Append("fromUrl=http%3A%2F%2Fwww.csdn.net%2F&userName=");
             postData.Append(username);
@@ -82,8 +101,29 @@ namespace Bll
             hr = helper.GetHtml(items); //发起请求并得到结果
             if (hr.Html.Contains("请在24小时内点击邮件中的链接继续完成注册"))
             {
-                
+                return true;
             }
+            return false;
+        }
+
+        private bool RegActivation(string alink)
+        {
+            HttpHelpers helper = new HttpHelpers(); //发起请求对象
+            HttpItems items = new HttpItems(); //请求设置对象
+            HttpResults hr = new HttpResults(); //请求结果
+            items.URL = alink;
+            items.Container = cc;
+            hr = helper.GetHtml(items);
+
+
+            items.URL = "https://passport.csdn.net/account/register?action=registerSuccess";
+            hr = helper.GetHtml(items);
+            items.Container = cc;
+            if (hr.Html.Contains("欢迎加入CSDN"))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

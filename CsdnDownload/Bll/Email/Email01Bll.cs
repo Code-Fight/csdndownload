@@ -67,7 +67,7 @@ namespace Bll.Email
             string ret;
             do
             {
-                Thread.Sleep(2000); //2秒 尝试有尝试一次获取激活链接
+                Thread.Sleep(500); //2秒 尝试有尝试一次获取激活链接
                 ret = GetNewMail();
             } while (!(ret.Length > 0));
             return ret;
