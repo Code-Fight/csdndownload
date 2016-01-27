@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using Bll.Email;
@@ -20,12 +21,17 @@ namespace Bll
         System.Net.CookieContainer cc = new System.Net.CookieContainer();//自动处理Cookie对象
         private int antiIndex = 0;
         AntiHelper antiHelper = new AntiHelper();
-
+        private string dc_session_id = string.Empty;
+        string dc_tos = string.Empty;
         
 
         public void Reg()
         {
             string _email = email01.GetEmail();
+             dc_session_id = GetDc_session_idByJs();
+             dc_tos = GetDc_tosByJs();
+            string _ga = "GA1.2.738968644.1453905180";
+            string _gat = "1";
             string _vCode = GetVcode();
             string _regLink = string.Empty;
             string _username = string.Empty;
@@ -108,22 +114,75 @@ namespace Bll
 
         private bool RegActivation(string alink)
         {
-            HttpHelpers helper = new HttpHelpers(); //发起请求对象
-            HttpItems items = new HttpItems(); //请求设置对象
-            HttpResults hr = new HttpResults(); //请求结果
-            items.URL = alink;
-            items.Container = cc;
-            hr = helper.GetHtml(items);
-
-
-            items.URL = "https://passport.csdn.net/account/register?action=registerSuccess";
-            hr = helper.GetHtml(items);
-            items.Container = cc;
-            if (hr.Html.Contains("欢迎加入CSDN"))
             {
-                return true;
+                HttpHelpers helper = new HttpHelpers(); //发起请求对象
+                HttpItems items = new HttpItems(); //请求设置对象
+                HttpResults hr = new HttpResults(); //请求结果
+                items.Allowautoredirect = false;
+                items.URL = alink;
+                string cookie= new XJHTTP().CookieTostring(cc);
+                cookie =new XJHTTP().UpdateCookie(cookie, " _gat=1; _ga=GA1.2.738968644.1453905180;");
+                cookie = new XJHTTP().UpdateCookie(cookie, string.Format(" dc_tos={0}; dc_session_id={1}", dc_session_id, dc_tos));
+                //items.Container = cc;
+                items.ProxyIp = "127.0.0.1:8888";
+                items.Cookie = cookie;
+                hr = helper.GetHtml(items);
             }
+
+            {
+                HttpHelpers helper = new HttpHelpers(); //发起请求对象
+                HttpItems items = new HttpItems(); //请求设置对象
+                HttpResults hr = new HttpResults(); //请求结果
+                items.URL = "https://passport.csdn.net/account/register?action=userInfoView";
+                items.Container = cc;
+                hr = helper.GetHtml(items);
+                if (!hr.Html.Contains("所在地区"))
+                {
+                    return false;
+                }
+            }
+
+            {
+                HttpHelpers helper = new HttpHelpers(); //发起请求对象
+
+                HttpItems items = new HttpItems(); //请求设置对象
+                HttpResults hr = new HttpResults(); //请求结果
+                items.URL = "https://passport.csdn.net/account/register?action=registerSuccess";
+                hr = helper.GetHtml(items);
+                items.Container = cc;
+                if (hr.Html.Contains("欢迎加入CSDN"))
+                {
+                    return true;
+                }
+            }
+
             return false;
         }
+
+        private string GetDc_tosByJs()
+        {
+            Type obj = Type.GetTypeFromProgID("ScriptControl");
+            if (obj == null) return null;
+            object ScriptControl = Activator.CreateInstance(obj);
+            obj.InvokeMember("Language", BindingFlags.SetProperty, null, ScriptControl, new object[] {"JScript"});
+            string js = "function Dc_tos(){return (new Date() / 1000 | 0).toString(36)}";
+            obj.InvokeMember("AddCode", BindingFlags.InvokeMethod, null, ScriptControl, new object[] {js});
+            return
+                obj.InvokeMember("Eval", BindingFlags.InvokeMethod, null, ScriptControl, new object[] {"Dc_tos()"})
+                    .ToString();
+        }
+
+        private string GetDc_session_idByJs()
+        {
+            Type obj = Type.GetTypeFromProgID("ScriptControl");
+            if (obj == null) return null;
+            object ScriptControl = Activator.CreateInstance(obj);
+            obj.InvokeMember("Language", BindingFlags.SetProperty, null, ScriptControl, new object[] { "JScript" });
+            string js = "function Dc_session_id(){return (new Date() / 1)}";
+            obj.InvokeMember("AddCode", BindingFlags.InvokeMethod, null, ScriptControl, new object[] { js });
+            return
+                obj.InvokeMember("Eval", BindingFlags.InvokeMethod, null, ScriptControl, new object[] { "Dc_session_id()" })
+                    .ToString();
+        } 
     }
 }
