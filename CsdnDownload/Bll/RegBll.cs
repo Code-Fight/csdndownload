@@ -23,15 +23,19 @@ namespace Bll
         AntiHelper antiHelper = new AntiHelper();
         private string dc_session_id = string.Empty;
         string dc_tos = string.Empty;
-        
+        private string _ga = string.Empty;
+        private string userAgent =
+            "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36";
+
+        private string Cookie = string.Empty;
 
         public void Reg()
         {
             string _email = email01.GetEmail();
              dc_session_id = GetDc_session_idByJs();
              dc_tos = GetDc_tosByJs();
-            string _ga = "GA1.2.738968644.1453905180";
-            string _gat = "1";
+             _ga = GetGAByJs();
+            //string _gat = "1";
             string _vCode = GetVcode();
             string _regLink = string.Empty;
             string _username = string.Empty;
@@ -63,18 +67,25 @@ namespace Bll
                 HttpItems items = new HttpItems();//请求设置对象
                 HttpResults hr = new HttpResults();//请求结果
                 items.URL = url;//设置请求地址
-                items.Container = cc;//自动处理Cookie时,每次提交时对cc赋值即可
+                //items.Container = cc;//自动处理Cookie时,每次提交时对cc赋值即可
                 items.ResultType = ResultType.Byte;//设置请求返回值类型为Byte
+                items.UserAgent = userAgent;
+                items.Cookie = Cookie;
                 StringBuilder vCodeResult = new StringBuilder('\0', 256);
-                byte[] img = helper.GetHtml(items).ResultByte;
+                hr = helper.GetHtml(items);
+                byte[] img = hr.ResultByte;
+                Cookie = new XJHTTP().UpdateCookie(Cookie, hr.Cookie);
                 if (AntiHelper.GetVcodeFromBuffer(antiIndex, img, img.Length, vCodeResult))
                 {
                     items = new HttpItems();
                     items.URL = "http://passport.csdn.net/account/register?action=validateCode&validateCode=" + vCodeResult;
-                    items.Container = cc;//自动处理Cookie时,每次提交时对cc赋值即可
+                    //items.Container = cc;//自动处理Cookie时,每次提交时对cc赋值即可
+                    items.Cookie = Cookie;
+                    items.UserAgent = userAgent;
                     hr = helper.GetHtml(items);//发起请求并得到结果
                     if (!hr.Html.Contains("false"))
                     {
+                        Cookie = new XJHTTP().UpdateCookie(Cookie, hr.Cookie);
                         return vCodeResult.ToString();
 
                     }
@@ -103,10 +114,13 @@ namespace Bll
             items.URL = "http://passport.csdn.net/account/register?action=saveUser&isFrom=true"; //设置请求地址
             items.Postdata = postData.ToString();
             items.Method = "Post";
-            items.Container = cc; //自动处理Cookie时,每次提交时对cc赋值即可
+            //items.Container = cc; //自动处理Cookie时,每次提交时对cc赋值即可
+            items.Cookie = Cookie;
+            items.UserAgent = userAgent;
             hr = helper.GetHtml(items); //发起请求并得到结果
             if (hr.Html.Contains("请在24小时内点击邮件中的链接继续完成注册"))
             {
+                Cookie = new XJHTTP().UpdateCookie(Cookie, hr.Cookie);
                 return true;
             }
             return false;
@@ -120,13 +134,19 @@ namespace Bll
                 HttpResults hr = new HttpResults(); //请求结果
                 items.Allowautoredirect = false;
                 items.URL = alink;
-                string cookie= new XJHTTP().CookieTostring(cc);
-                cookie =new XJHTTP().UpdateCookie(cookie, " _gat=1; _ga=GA1.2.738968644.1453905180;");
-                cookie = new XJHTTP().UpdateCookie(cookie, string.Format(" dc_tos={0}; dc_session_id={1}", dc_session_id, dc_tos));
+               //string cookie= new XJHTTP().CookieTostring(cc);
+                //cookie =new XJHTTP().UpdateCookie(cookie, " _gat=1; _ga=GA1.2.738968644.1453905180;");
+                //cookie = new XJHTTP().UpdateCookie(cookie, string.Format(" dc_tos={0}; dc_session_id={1}", dc_session_id, dc_tos));
                 //items.Container = cc;
                 items.ProxyIp = "127.0.0.1:8888";
-                items.Cookie = cookie;
+                //items.Container = cc;
+                Cookie = new XJHTTP().UpdateCookie(Cookie, " _gat=1");
+                Cookie = new XJHTTP().UpdateCookie(Cookie, " _ga=" + _ga);
+                Cookie = new XJHTTP().UpdateCookie(Cookie, string.Format(" dc_tos={0}; dc_session_id={1}", dc_session_id, dc_tos));
+                items.Cookie = Cookie;
+                items.UserAgent = userAgent;
                 hr = helper.GetHtml(items);
+                Cookie = new XJHTTP().UpdateCookie(Cookie, hr.Cookie);
             }
 
             {
@@ -182,6 +202,20 @@ namespace Bll
             obj.InvokeMember("AddCode", BindingFlags.InvokeMethod, null, ScriptControl, new object[] { js });
             return
                 obj.InvokeMember("Eval", BindingFlags.InvokeMethod, null, ScriptControl, new object[] { "Dc_session_id()" })
+                    .ToString();
+        }
+
+
+        private string GetGAByJs()
+        {
+            Type obj = Type.GetTypeFromProgID("ScriptControl");
+            if (obj == null) return null;
+            object ScriptControl = Activator.CreateInstance(obj);
+            obj.InvokeMember("Language", BindingFlags.SetProperty, null, ScriptControl, new object[] { "JScript" });
+            string js = Resource1.Math_Ga;
+            obj.InvokeMember("AddCode", BindingFlags.InvokeMethod, null, ScriptControl, new object[] { js });
+            return
+                obj.InvokeMember("Eval", BindingFlags.InvokeMethod, null, ScriptControl, new object[] { "Math_Ga()" })
                     .ToString();
         } 
     }

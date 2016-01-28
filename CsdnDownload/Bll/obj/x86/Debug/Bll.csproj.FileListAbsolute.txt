@@ -40,3 +40,5 @@ D:\C#_Project\GitHub\csdndownload\CsdnDownload\Bll\bin\x86\Debug\Entity.pdb
 D:\C#_Project\GitHub\csdndownload\CsdnDownload\Bll\obj\x86\Debug\Bll.csprojResolveAssemblyReference.cache
 D:\C#_Project\GitHub\csdndownload\CsdnDownload\Bll\obj\x86\Debug\Bll.dll
 D:\C#_Project\GitHub\csdndownload\CsdnDownload\Bll\obj\x86\Debug\Bll.pdb
+E:\MySource\GitHub\csdndownload\CsdnDownload\Bll\obj\x86\Debug\Bll.Resource1.resources
+E:\MySource\GitHub\csdndownload\CsdnDownload\Bll\obj\x86\Debug\Bll.csproj.GenerateResource.Cache
