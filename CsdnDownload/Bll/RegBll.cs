@@ -24,18 +24,17 @@ namespace Bll
         private string dc_session_id = string.Empty;
         string dc_tos = string.Empty;
         private string _ga = string.Empty;
-        private string userAgent =
-            "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36";
+        
 
-        private string Cookie = string.Empty;
+        //private string Cookie = string.Empty;
 
         public void Reg()
         {
             string _email = email01.GetEmail();
-             dc_session_id = GetDc_session_idByJs();
-             dc_tos = GetDc_tosByJs();
-             _ga = GetGAByJs();
-            //string _gat = "1";
+            dc_tos = GetDc_tosByJs();
+            _ga = GetGAByJs();
+            dc_session_id = GetDc_session_idByJs();
+            
             string _vCode = GetVcode();
             string _regLink = string.Empty;
             string _username = string.Empty;
@@ -56,6 +55,10 @@ namespace Bll
                 }
             }
         }
+
+        
+
+        
         public string GetVcode()
         {
             while (true)
@@ -67,25 +70,20 @@ namespace Bll
                 HttpItems items = new HttpItems();//请求设置对象
                 HttpResults hr = new HttpResults();//请求结果
                 items.URL = url;//设置请求地址
-                //items.Container = cc;//自动处理Cookie时,每次提交时对cc赋值即可
+                items.Container = cc;//自动处理Cookie时,每次提交时对cc赋值即可
                 items.ResultType = ResultType.Byte;//设置请求返回值类型为Byte
-                items.UserAgent = userAgent;
-                items.Cookie = Cookie;
                 StringBuilder vCodeResult = new StringBuilder('\0', 256);
                 hr = helper.GetHtml(items);
                 byte[] img = hr.ResultByte;
-                Cookie = new XJHTTP().UpdateCookie(Cookie, hr.Cookie);
                 if (AntiHelper.GetVcodeFromBuffer(antiIndex, img, img.Length, vCodeResult))
                 {
                     items = new HttpItems();
                     items.URL = "http://passport.csdn.net/account/register?action=validateCode&validateCode=" + vCodeResult;
-                    //items.Container = cc;//自动处理Cookie时,每次提交时对cc赋值即可
-                    items.Cookie = Cookie;
-                    items.UserAgent = userAgent;
+                    items.Container = cc;//自动处理Cookie时,每次提交时对cc赋值即可
                     hr = helper.GetHtml(items);//发起请求并得到结果
                     if (!hr.Html.Contains("false"))
                     {
-                        Cookie = new XJHTTP().UpdateCookie(Cookie, hr.Cookie);
+                       
                         return vCodeResult.ToString();
 
                     }
@@ -114,13 +112,10 @@ namespace Bll
             items.URL = "http://passport.csdn.net/account/register?action=saveUser&isFrom=true"; //设置请求地址
             items.Postdata = postData.ToString();
             items.Method = "Post";
-            //items.Container = cc; //自动处理Cookie时,每次提交时对cc赋值即可
-            items.Cookie = Cookie;
-            items.UserAgent = userAgent;
+            items.Container = cc; //自动处理Cookie时,每次提交时对cc赋值即可
             hr = helper.GetHtml(items); //发起请求并得到结果
             if (hr.Html.Contains("请在24小时内点击邮件中的链接继续完成注册"))
             {
-                Cookie = new XJHTTP().UpdateCookie(Cookie, hr.Cookie);
                 return true;
             }
             return false;
@@ -128,55 +123,27 @@ namespace Bll
 
         private bool RegActivation(string alink)
         {
-            {
                 HttpHelpers helper = new HttpHelpers(); //发起请求对象
                 HttpItems items = new HttpItems(); //请求设置对象
                 HttpResults hr = new HttpResults(); //请求结果
-                items.Allowautoredirect = false;
+                //items.Allowautoredirect = false;
                 items.URL = alink;
                //string cookie= new XJHTTP().CookieTostring(cc);
                 //cookie =new XJHTTP().UpdateCookie(cookie, " _gat=1; _ga=GA1.2.738968644.1453905180;");
                 //cookie = new XJHTTP().UpdateCookie(cookie, string.Format(" dc_tos={0}; dc_session_id={1}", dc_session_id, dc_tos));
-                //items.Container = cc;
-                items.ProxyIp = "127.0.0.1:8888";
-                //items.Container = cc;
-                Cookie = new XJHTTP().UpdateCookie(Cookie, " _gat=1");
-                Cookie = new XJHTTP().UpdateCookie(Cookie, " _ga=" + _ga);
-                Cookie = new XJHTTP().UpdateCookie(Cookie, string.Format(" dc_tos={0}; dc_session_id={1}", dc_session_id, dc_tos));
-                items.Cookie = Cookie;
-                items.UserAgent = userAgent;
-                hr = helper.GetHtml(items);
-                Cookie = new XJHTTP().UpdateCookie(Cookie, hr.Cookie);
-            }
-
-            {
-                HttpHelpers helper = new HttpHelpers(); //发起请求对象
-                HttpItems items = new HttpItems(); //请求设置对象
-                HttpResults hr = new HttpResults(); //请求结果
-                items.URL = "https://passport.csdn.net/account/register?action=userInfoView";
                 items.Container = cc;
+                //items.Container = cc;
+                //Cookie = new XJHTTP().UpdateCookie(Cookie, " _gat=1");
+                //Cookie = new XJHTTP().UpdateCookie(Cookie, " _ga=" + _ga);
+                //Cookie = new XJHTTP().UpdateCookie(Cookie, string.Format("  UN={0}; UE=\"{1}\"; ", name, uemail));
+                
                 hr = helper.GetHtml(items);
-                if (!hr.Html.Contains("所在地区"))
-                {
-                    return false;
-                }
-            }
-
-            {
-                HttpHelpers helper = new HttpHelpers(); //发起请求对象
-
-                HttpItems items = new HttpItems(); //请求设置对象
-                HttpResults hr = new HttpResults(); //请求结果
-                items.URL = "https://passport.csdn.net/account/register?action=registerSuccess";
-                hr = helper.GetHtml(items);
-                items.Container = cc;
-                if (hr.Html.Contains("欢迎加入CSDN"))
+                if (hr.Html.Contains("所在地区"))
                 {
                     return true;
                 }
-            }
-
-            return false;
+                return false;
+           
         }
 
         private string GetDc_tosByJs()

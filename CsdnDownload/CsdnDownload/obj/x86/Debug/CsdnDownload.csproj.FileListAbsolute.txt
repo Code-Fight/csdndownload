@@ -59,3 +59,4 @@ D:\C#_Project\GitHub\csdndownload\CsdnDownload\CsdnDownload\obj\x86\Debug\CsdnDo
 D:\C#_Project\GitHub\csdndownload\CsdnDownload\CsdnDownload\obj\x86\Debug\CsdnDownload.Properties.Resources.resources
 D:\C#_Project\GitHub\csdndownload\CsdnDownload\CsdnDownload\obj\x86\Debug\CsdnDownload.csproj.GenerateResource.Cache
 E:\MySource\GitHub\csdndownload\CsdnDownload\CsdnDownload\obj\x86\Debug\CsdnDownload.Resource1.resources
+D:\C#_Project\GitHub\csdndownload\CsdnDownload\CsdnDownload\obj\x86\Debug\CsdnDownload.Resource1.resources

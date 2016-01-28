@@ -69,6 +69,14 @@ namespace Bll.Email
             {
                 Thread.Sleep(500); //2秒 尝试有尝试一次获取激活链接
                 ret = GetNewMail();
+                if (ret.Length>0)
+                {
+                    ret = ret.Replace("amp;", "");
+                }
+                if (ret.Contains("操作超时"))
+                {
+                    ret = GetNewMail();
+                }
             } while (!(ret.Length > 0));
             return ret;
         }

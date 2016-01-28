@@ -42,3 +42,5 @@ D:\C#_Project\GitHub\csdndownload\CsdnDownload\Bll\obj\x86\Debug\Bll.dll
 D:\C#_Project\GitHub\csdndownload\CsdnDownload\Bll\obj\x86\Debug\Bll.pdb
 E:\MySource\GitHub\csdndownload\CsdnDownload\Bll\obj\x86\Debug\Bll.Resource1.resources
 E:\MySource\GitHub\csdndownload\CsdnDownload\Bll\obj\x86\Debug\Bll.csproj.GenerateResource.Cache
+D:\C#_Project\GitHub\csdndownload\CsdnDownload\Bll\obj\x86\Debug\Bll.Resource1.resources
+D:\C#_Project\GitHub\csdndownload\CsdnDownload\Bll\obj\x86\Debug\Bll.csproj.GenerateResource.Cache

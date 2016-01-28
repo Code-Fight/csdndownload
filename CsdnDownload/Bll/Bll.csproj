@@ -58,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CsdnUserBll.cs" />
     <Compile Include="EmailBll.cs" />
     <Compile Include="Email\Email01Bll.cs" />
     <Compile Include="IP\IPCollectionBll.cs" />
